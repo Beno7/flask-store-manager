@@ -21,7 +21,7 @@ class Store(Resource):
     def delete(self, name):
         store = StoreModel.find_by_name(name)
         if store:
-            return store.delete_from_db()
+            store.delete_from_db()
         return {'message': 'Store deleted'}
 
 
