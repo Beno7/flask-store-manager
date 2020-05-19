@@ -15,10 +15,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'secret_key'
 api = Api(app)
 
-@app.before_first_request # before any request, SQLALCHEMY will run this function
-def create_tables():
-    db.create_all() # Will create all registered dbs (see models)
-
 jwt = JWT(app, authenticate, identity)
 
 api.add_resource(Store, '/store/<string:name>')
