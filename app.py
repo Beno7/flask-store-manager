@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask
 from flask_restful import Api
 from flask_jwt import JWT
@@ -8,7 +10,7 @@ from resources.item import Item, ItemList
 from resources.store import Store, StoreList
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://mxiucehhdoelhg:f9d6a6c73424f9c0b44a2f3ee28845acbe87f167c89efc9a4851c15f7bdc1ef4@ec2-54-247-122-209.eu-west-1.compute.amazonaws.com:5432/d3896eg0g9okq3'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db') # Use sqlite as default
 # Defines where the db resides (in this case, it is sqlite)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Turns off Flask SQLALCHEMY Modification Tracker, not the underlying SQLAlchemy Modification Tracker
