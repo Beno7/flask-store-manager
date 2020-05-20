@@ -10,7 +10,7 @@ class Store(Resource):
 
     def post(self, name):
         if StoreModel.find_by_name(name):
-            return {'message': f'Store \'{name}\'already exists.'}, 400
+            return {'message': 'Store \'{}\'already exists.'.format(name)}, 400
         store = StoreModel(name)
         try:
             store.save_to_db()
